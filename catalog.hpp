@@ -26,7 +26,12 @@ public:
           const std::string& name,
           double price) {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    
+    if(price < 0)
+       throw std::logic_error("not implemented yet");
+    this->code = code;
+    this->name = name;
+    this->price = price;
   }
 
   ~Product() { }
@@ -52,29 +57,44 @@ public:
   // std::invalid_argument.
   Catalog(int maxProducts) {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(maxProducts < 0)
+        throw std::logic_error("not implemented yet");
+    capacity = maxProducts;
+    size = 0;
+    Cat = new Product [capacity];
+    for(int i = 0; i < capacity; i++){
+      Cat[i]("","",0.0);
+    }
   }
   
   ~Catalog() {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(size <= 0)
+       throw std::logic_error("not implemented yet");
+   delete []Cat;
   }
 
   // Accessors.
   int getMaxProducts() const {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(capacity <= 0)
+       throw std::logic_error("not implemented yet");
+   return capacity;
   }
   
   int getNumProducts() const {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(size <= 0)
+       throw std::logic_error("not implemented yet");
+   return size;
   }
 
   // Return true when the catalog cannot fit any more products.
   bool isFull() const {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(capacity <= 0)
+       throw std::logic_error("not implemented yet");
+   return size >= capacity;
   }
 
   // Add a new product to the catalog with a given code and name.
@@ -90,7 +110,11 @@ public:
                   const std::string& name,
                   double price) {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    if(price < 0) 
+       throw std::logic_error("invalid_argument");
+    if(isFull) 
+       throw std::logic_error("overflow_error");
+   Cat[size](code,name,price);
   }
 
   // Find a product by its code.
@@ -103,9 +127,14 @@ public:
   // in the catalog.
   const Product& findCode(const std::string& code) const {
     // TODO: implement this function properly
-    throw std::logic_error("not implemented yet");
+    for(int i = 0; i < size; i++){
+      if(Cat[i].getCode() == code){return &(Cat[i]);}
+    }
+    throw std::logic_error("invalid_argument");
   }
 
 private:
   // TODO: add data members
+  int capacity;
+  Product* Cat;
 };
