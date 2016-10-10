@@ -1,9 +1,2 @@
-CSUF CPSC 131, Fall 2016
-Project 1
-"Grocery Cash Register"
-
-Group members:
-
-Ada Lovelace adalovelace@csu.fullerton.edu
-
-Charles Babbage charlesbab@csu.fullerton.edu
+PLEASE DISREGARD THIS SUMBMISSION
+I am a SI leader for Dr. Wortman's session, not a registered student for 131. This submission is only for me to test out the environment. Thank you.
